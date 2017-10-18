@@ -1,0 +1,5 @@
+# gitignore
+
+
+## Because macOS
+.DS_Store
