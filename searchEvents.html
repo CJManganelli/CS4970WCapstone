@@ -65,26 +65,28 @@
       <!-- Search Options -->
       <div class="row">
         
-        <form action="./searchEvents.html" method="GET" class="col-md-4 col-md-offset-5">
+        <!--<form action="./searchEvents.html" method="GET" class="col-md-4 col-md-offset-5">
             <div class="form-group">
                 <label for="sortBy">Sort By:</label>
-                <!--<select name="sortBy" onchange="sortEvents(this.value)">
+                <select name="sortBy" onchange="sortEvents(this.value)">
                     <option value="activity">Activity</option>
                     <!-- PHP to generate the options
                     <option value="location">Location</option>
-                </select>-->
-                <button class="btn btn-primary" value="activity" onclick="sortEvents(this.value)">Activity</button>
-                <button class="btn btn-primary" value="location" onclick="sortEvents(this.value)">Location</button>
+                </select>
             </div>
 
-        </form>
+        </form>-->
+        
+          
+        <button class="btn btn-primary" onclick="sortEvents('activity')">Activity</button>
+        <button class="btn btn-primary" onclick="sortEvents('location')">Location</button>
         
       </div>
 
       <hr>
       <!-- /Search Options -->
         
-        <div class="row" id="eventDisplay">
+        <div class="row">
         
             <!-- Event Template --> <!-- PHP will generate all the upcoming events -->
                
@@ -102,6 +104,8 @@
           <!-- /Event Template -->
         
         </div>
+        <hr>
+        <div class="row" id="eventDisplay"></div>
 
 
     </div>
