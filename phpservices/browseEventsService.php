@@ -1,14 +1,62 @@
 <?php
 
+    require("./phpservices/connectDB.php");
 
     $sort = $_GET['sortBy'];
 
     if($sort == "") {
-        echo "<p>Error</p>";
+        echo "<p>INPUT ERROR</p>";
+        exit;
     }
     else {
         
-        if($sort == "activity") {
+        $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
+        
+        if(!$link) {
+            echo "<p>ERROR CONNECTING TO DATABASE</p>";
+            exit;
+        }
+        else{
+            
+            $sqlSTMT
+            
+            if($sort == "activity") {
+                $sqlSTMT = querySelect($sort);
+                
+            }
+            
+            else if ($sort == "location") {
+                $sqlSTMT = querySelect($sort);
+                
+            }
+            
+            else {
+                
+                
+            } //end selecting the query to run
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        } //end if(!$link)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*if($sort == "activity") {
             echo "<p>Activity</p>";
         }
         
@@ -28,11 +76,36 @@
         
         else {
             echo "<p>Ehh, The AJAX still worked</p>";
-        }
+        }*/
         
     }
 
 
+
+    function querySelect($input) {
+        
+        $queryReturn;
+        
+        if($input == 'activity'){
+            $queryReturn = '';
+            return $queryReturn;
+        }
+        
+        else if ($input == 'location') {
+            $queryReturn = '';
+            return $queryReturn;
+        }
+        
+        else {
+            $queryReturn = '';
+            return $queryReturn;
+            
+        }
+        
+        
+        
+        
+    } // end of querySelect($input)
 
 
 
