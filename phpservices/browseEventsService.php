@@ -13,7 +13,17 @@
         }
         
         else if($sort == "location") {
-            echo "<p>Location</p>";
+            echo '
+                <div class="col-md-4 col-md-offset-5">
+                  <h3>Event One</h3>
+                  <ul>
+                    <li>Date:</li> 
+                    <li>Time:</li>
+                    <li>Location:</li>
+                  </ul>
+                  <a class="btn btn-primary" href="#">Count Me In!</a>
+                </div>
+            ';
         }
         
         else {
