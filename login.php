@@ -44,7 +44,7 @@
         <div class="col-md-5">
             <form role="form" action="./phpservices/login-handler.php" method="POST">
 
-            <input type="hidden" name="action" value="continue">
+            <input type="hidden" name="action" value="login">
 
             <div class="form-group">
               <label for="user">Username:</label>

@@ -1,6 +1,8 @@
 <?php
   //print "Hello";
 
+  require './phpservices/connectDB.php';
+
   $username = empty($_COOKIE['username']) ? '' : $_COOKIE['username'];
 
   if($username) {
@@ -11,8 +13,11 @@
   $action = empty($_POST['action']) ? '' : $_POST['action'];
 
 
-  if($action == 'continue') {
+  if($action == 'login') {
     logIn();
+  }
+  else if ($action == 'register') {
+    register();
   }
   else {
     sendBack();
@@ -22,7 +27,7 @@
       
         //connect to db
 
-        require("./phpservices/connectDB.php");
+        
         $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
 
         if (!$link) {
@@ -38,7 +43,35 @@
             $username = empty($_POST['username']) ? '' : $_POST['username'];
             $password = empty($_POST['password']) ? '' : $_POST['password']; 
             
+            $sql = ''; // query goes here.
             
+            if ($stmt = mysqli_prepare($link, $sql)) {
+                mysqli_stmt_bind_param($stmt, "s", $user);
+
+                if (mysqli_stmt_execute($stmt)) {
+                    $result = mysqli_stmt_get_result($stmt);
+                    $array = mysqli_fetch_assoc($result);
+
+                    $dbPass = $array['hashed_password'];          
+
+                    if(password_verify($password, $dbPass)) {
+                      echo '<div class = "alert alert-success"><h3>Success!</h3></div>';
+                      header("Location : ./index.php");
+                      exit;
+                    }
+                    else {
+                      echo '<div class = "alert alert-danger"><h3>Login failed</h3></div>';
+                      echo '<a href="/lab7/login.php" class="btn btn-info">Home</a>';
+
+                    }
+
+                }
+                else {
+                    echo '<h3>Something Broke!</h3>';
+                    echo '<a href="/lab7/login.php" class="btn btn-info">Back</a>';
+                }
+
+            }
 
             //search for entered username
             //if valid, continue. if not, gtfo.
@@ -47,14 +80,14 @@
             //compare passwords
 
 
-            if ($username == "test" && $password == "pass") {
+            /*if ($username == "test" && $password == "pass") {
                 setcookie('username', $username);
                 header("Location: index.php");
                 exit;
             } else {
                 $error = 'Incorrect username or password. Please try again.';
                 require "login.php";
-            }		    
+            }*/		    
 
         }
   }
@@ -64,7 +97,7 @@
   function register() {
       
       
-      
+      $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
       
       
       
