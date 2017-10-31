@@ -21,14 +21,15 @@
   function logIn() {
       
         //connect to db
-        
-        $link = mysqli_connect("localhost", "root", "my_password", "my_db"); // change shit
+
+        require("./phpservices/connectDB.php");
+        $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
 
         if (!$link) {
             echo "Error: Unable to connect to MySQL." . PHP_EOL;
             echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
             echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-            sendback("Error Connecting to Database!");
+            sendback("Error Connecting to Database!", "login");
         }
         else {
             
@@ -36,6 +37,8 @@
 
             $username = empty($_POST['username']) ? '' : $_POST['username'];
             $password = empty($_POST['password']) ? '' : $_POST['password']; 
+            
+            
 
             //search for entered username
             //if valid, continue. if not, gtfo.
@@ -56,11 +59,32 @@
         }
   }
 
-  function sendBack($errorText) {
+
+
+  function register() {
+      
+      
+      
+      
+      
+      
+      
+  }
+
+  function sendBack($errorText, $page) {
     
  		$username = "";
 		$error = $errorText;
-		require "login.php";
+      
+        if($page == "login") {
+		  require "./login.php";
+        }
+        else if ($page == "register") {
+            require "./register.php";
+        }
+        else {
+            require "./login.php";
+        }
     
   }
 

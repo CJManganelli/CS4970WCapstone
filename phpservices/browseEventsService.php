@@ -1,6 +1,6 @@
 <?php
 
-    require("./phpservices/connectDB.php");
+    
 
     $sort = $_GET['sortBy'];
 
@@ -10,6 +10,8 @@
     }
     else {
         
+        //connect to DB
+        require("./phpservices/connectDB.php");
         $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
         
         if(!$link) {

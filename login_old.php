@@ -24,7 +24,7 @@
 
     <div class="jumbotron">
       <h2>Please sign in.</h2>
-      <form role="form" action="login-handler.php" method="POST">
+      <form role="form" action="./phpservices/login-handler.php" method="POST">
         
         <input type="hidden" name="action" value="continue">
         

@@ -33,18 +33,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="./index.html">Home
+              <a class="nav-link" href="./index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./searchEvents.html">Search</a>
+              <a class="nav-link" href="./searchEvents.php">Search</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./createEvent.html">Create</a>
+              <a class="nav-link" href="./createEvent.php">Create</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./profile.html">Profile</a>
+              <a class="nav-link" href="./profile.php">Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Sign Out</a>
