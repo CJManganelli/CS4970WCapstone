@@ -18,6 +18,7 @@
       
     <!-- Custom CSS and JS -->
     <link href="./css/customCSS.css" rel="stylesheet">
+    <script src="./javascript/formCheck.js"></script>
 
   </head>
 
@@ -56,7 +57,7 @@
             </div>
             <div class="form-group">
               <label for="pwdCnfm">Confirm:</label>
-              <input type="password" name="confirm" class="form-control" onkeyup="formCheck(document.getElementById('pwd'), this.value)" id="pwdCnfm">
+              <input type="password" name="confirm" class="form-control" onkeyup="formCheck(document.getElementById('pwd').value, this.value)" id="pwdCnfm">
             </div>
             <div class="form-group" id="passMatch"></div>
             

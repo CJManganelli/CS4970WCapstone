@@ -1,4 +1,4 @@
-function fromCheck(str1, str2) {
+function formCheck(str1, str2) {
     
     console.log(str);
     

@@ -18,7 +18,7 @@
       
     <!-- Custom CSS and JS -->
     <link href="./css/customCSS.css" rel="stylesheet">
-    <script src="javascript/searchEvents.js"></script>
+    <script src="./javascript/searchEvents.js"></script>
 
   </head>
 
