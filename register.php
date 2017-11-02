@@ -52,7 +52,7 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Please Sign in:
+      <h1 class="my-4">Sign Up Today!:
         <small></small>
       </h1>
         

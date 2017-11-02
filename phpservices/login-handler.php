@@ -1,20 +1,36 @@
 <?php
-  //print "Hello";
+  //print "Hello<br>";
 
-  require './phpservices/connectDB.php';
+  //require './phpservices/connectDB.php';
+
+  $SQLUSER = "queryUser";
+
+  $SQLPASS = "WLMd8K0DxnRhk3gH";
+
+  $SQLHOST = "localhost";
+
+  $SQLDB = "mydb";
+
+
+
+  //print "Hello<br>";
 
   $username = empty($_COOKIE['username']) ? '' : $_COOKIE['username'];
 
   if($username) {
-    header("Location : index.php");
+    header("Location : ./index.php");
     exit;    
   }
 
-  $action = empty($_POST['action']) ? '' : $_POST['action'];
+  //$action = empty($_POST['action']) ? '' : $_POST['action'];
+  
+  $action = $_POST['action'];
 
+  print $action;
 
   if($action == 'login') {
-    logIn();
+    print "login function<br>";
+    //logIn();
   }
   else if ($action == 'register') {
     register();
@@ -61,14 +77,14 @@
                     }
                     else {
                       echo '<div class = "alert alert-danger"><h3>Login failed</h3></div>';
-                      echo '<a href="/lab7/login.php" class="btn btn-info">Home</a>';
+                      echo '<a href="./login.php" class="btn btn-info">Home</a>';
 
                     }
 
                 }
                 else {
                     echo '<h3>Something Broke!</h3>';
-                    echo '<a href="/lab7/login.php" class="btn btn-info">Back</a>';
+                    echo '<a href="./login.php" class="btn btn-info">Back</a>';
                 }
 
             }
@@ -99,6 +115,12 @@
       $user = empty($_POST['username']) ? '' : $_POST['username'];
       $password = empty($_POST['password']) ? '' : $_POST['password'];
       
+      print $user;
+      print '<br>';
+      print $password;
+      
+      
+      /*
       
       $hashedpass = password_hash($password, PASSWORD_BCRYPT);
       
@@ -122,7 +144,7 @@
           echo '<h3>Something Broke!</h3>';
           echo '<a href="./register.php" class="btn btn-info">Back</a>';
       }
-      
+      */
       
       
   }
