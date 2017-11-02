@@ -15,6 +15,12 @@ print "<br>";
 print $SQLDB;
 print "<br>";
 
+$password = 'password';
 
+print 'password is: ' . $password . '<br>';
+
+$hashPass = password_hash($password, PASSWORD_BCRYPT);
+
+print 'hashed password is: ' . $hashPass . '<br>';
 
 ?>

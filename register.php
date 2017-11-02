@@ -62,7 +62,15 @@
             <form role="form" action="./phpservices/login-handler.php" method="POST">
 
             <input type="hidden" name="action" value="register">
-
+                
+            <div class="form-group">
+              <label for="user">First Name:</label>
+              <input type="user" name="fName" class="form-control" id="fName">
+            </div>  
+            <div class="form-group">
+              <label for="user">Last Name:</label>
+              <input type="user" name="lName" class="form-control" id="lName">
+            </div>
             <div class="form-group">
               <label for="user">Username:</label>
               <input type="user" name="username" class="form-control" id="user">

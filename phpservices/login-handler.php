@@ -114,13 +114,19 @@
       
       $user = empty($_POST['username']) ? '' : $_POST['username'];
       $password = empty($_POST['password']) ? '' : $_POST['password'];
+      $fName = empty($_POST['fName']) ? '' : $_POST['fName'];
+      $lName = empty($_POST['lName']) ? '' : $_POST['lName'];
       
       print $user;
       print '<br>';
       print $password;
+      print '<br>';
+      print $fName;
+      print ' ';
+      print $lName;
       
       
-      /*
+      
       
       $hashedpass = password_hash($password, PASSWORD_BCRYPT);
       
@@ -144,7 +150,7 @@
           echo '<h3>Something Broke!</h3>';
           echo '<a href="./register.php" class="btn btn-info">Back</a>';
       }
-      */
+      
       
       
   }
