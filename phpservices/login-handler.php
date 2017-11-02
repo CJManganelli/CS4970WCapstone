@@ -96,9 +96,32 @@
 
   function register() {
       
+      $user = empty($_POST['username']) ? '' : $_POST['username'];
+      $password = empty($_POST['password']) ? '' : $_POST['password'];
+      
+      
+      $hashedpass = password_hash($password, PASSWORD_BCRYPT);
       
       $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
       
+      $query = ''; //waiting on a query
+      
+      if ($stmt = msqli_prepare($link, $query)) {
+          mysqli_stmt_bind_param($stmt, "sss", $user, $salt, $hashedpass);
+          
+          if(mysqli_stmt_execute($stmt)) {
+              echo '<div class = "alert alert-success"><h3>Success!</h3></div>';
+              echo '<a href="./login.php" class="btn btn-info">Login</a>';
+          }
+          else {
+              echo '<h3>Something Broke!</h3>';
+              echo '<a href="./register.php" class="btn btn-info">Back</a>';
+          }
+      }
+      else {
+          echo '<h3>Something Broke!</h3>';
+          echo '<a href="./register.php" class="btn btn-info">Back</a>';
+      }
       
       
       

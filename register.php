@@ -19,6 +19,22 @@
     <!-- Custom CSS and JS -->
     <link href="./css/customCSS.css" rel="stylesheet">
     <script src="./javascript/formCheck.js"></script>
+    <script>
+      function submitText() {
+        
+        var str1 = document.getElementById("pwd").value;
+        var str2 = document.getElementById("pwdCnfm").value;
+        
+        console.log(str1);
+        console.log(str2);
+          
+          
+        formCheck(str1, str2);
+          
+        
+      };
+      
+    </script>
 
   </head>
 
@@ -57,7 +73,7 @@
             </div>
             <div class="form-group">
               <label for="pwdCnfm">Confirm:</label>
-              <input type="password" name="confirm" class="form-control" onkeyup="formCheck(document.getElementById('pwd').value, this.value)" id="pwdCnfm">
+              <input type="password" name="confirm" class="form-control" onkeyup="submitText()" id="pwdCnfm">
             </div>
             <div class="form-group" id="passMatch"></div>
             
