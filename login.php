@@ -1,3 +1,19 @@
+<?php
+	/*if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
+	   $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	   header('Location: ' . $url);
+	    //exit;
+	}*/
+	session_start();
+
+        $loggedIn = empty($_SESSION['username']) ? false : $_SESSION['username'];
+	      if ($loggedIn) {
+		  header("Location: ./index.php");
+		  exit;
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +33,7 @@
     <link href="css/1-col-portfolio.css" rel="stylesheet">
       
     <!-- Custom CSS and JS -->
-    <link href="./css/customCSS.css" rel="stylesheet">
+    <link href="css/customCSS.css" rel="stylesheet">
 
   </head>
 
@@ -55,9 +71,15 @@
               <input type="password" name="password" class="form-control" id="pwd">
             </div>
                     <?php
+                        
+                        $error = $_SESSION['authError'];
+                        
                         if($error) {
                             print "<div class='alert alert-warning'>$error</div>\n";
 
+                        }
+                        else {
+                            echo '<p>message should go here</p>';
                         }
                     ?>
 

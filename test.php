@@ -16,11 +16,33 @@ print $SQLDB;
 print "<br>";
 
 $password = 'password';
+$hardCode = '$2y$10$Ig2vrkrMSFr1HuN5MvrNQOOvCl8/d16RufFO1tUDhnHD6Wel8AQIe';
+
+
 
 print 'password is: ' . $password . '<br>';
 
 $hashPass = password_hash($password, PASSWORD_BCRYPT);
 
 print 'hashed password is: ' . $hashPass . '<br>';
+
+print '<br>';
+
+$link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
+
+if(!$link){
+    print 'it broke<br>';
+}
+else{
+    print 'connected<br>';
+}
+
+
+if(password_verify($password, $hardCode)) {
+    print 'verified<br>';
+}
+else {
+    print 'fuck this project<br>';
+}
 
 ?>

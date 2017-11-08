@@ -1,5 +1,5 @@
 <?php
-  //print "Hello<br>";
+  echo "Hello<br>";
 
   //require './phpservices/connectDB.php';
 
@@ -13,40 +13,50 @@
 
 
 
-  //print "Hello<br>";
-
+  echo "Hello again<br>";
+/*
   $username = empty($_COOKIE['username']) ? '' : $_COOKIE['username'];
 
   if($username) {
     header("Location : ./index.php");
     exit;    
   }
-
+*/
   //$action = empty($_POST['action']) ? '' : $_POST['action'];
   
   $action = $_POST['action'];
 
-  print $action;
+  //$action = 'login';
+
+  echo $action . '<br>';
 
   if($action == 'login') {
-    print "login function<br>";
-    //logIn();
+    echo "login function<br>";
+    logIn();
   }
   else if ($action == 'register') {
+    echo 'register<br>';
     register();
   }
   else {
-    sendBack();
+    //echo 'register<br>';
+    sendBack('Something Broke!', 'login');
   }
 
   function logIn() {
       
         //connect to db
+        echo 'inside login()<br>';
 
-        
+        //require './phpservices/connectDB.php';
+      
+        global $SQLHOST, $SQLUSER, $SQLPASS, $SQLDB;
+      
+      
         $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
 
         if (!$link) {
+            echo 'fuuuuuuuuuuuuuuuu<br>';
             echo "Error: Unable to connect to MySQL." . PHP_EOL;
             echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
             echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
@@ -54,11 +64,30 @@
         }
         else {
             
-        
+            echo 'Hello?';
 
             $username = empty($_POST['username']) ? '' : $_POST['username'];
             $password = empty($_POST['password']) ? '' : $_POST['password']; 
             
+            ///* This is temporary while I wait for authentication queries
+            
+            if($username == 'admin' && $password == 'password'){
+                echo '<h1>It works!</h1>';
+                session_start();
+                $_SESSION['username'] = $username;
+                header("Location: ../index.php");
+                exit;
+            }
+            else {
+                echo '<h1>Something broke!</h1>';
+                sendBack('invaild username or password', 'login');
+                
+            }
+            
+            //*/
+            
+            
+            /*
             $sql = ''; // query goes here.
             
             if ($stmt = mysqli_prepare($link, $sql)) {
@@ -68,7 +97,7 @@
                     $result = mysqli_stmt_get_result($stmt);
                     $array = mysqli_fetch_assoc($result);
 
-                    $dbPass = $array['hashed_password'];          
+                    //$dbPass = $array['hashed_password'];          
 
                     if(password_verify($password, $dbPass)) {
                       echo '<div class = "alert alert-success"><h3>Success!</h3></div>';
@@ -88,6 +117,8 @@
                 }
 
             }
+            
+            */
 
             //search for entered username
             //if valid, continue. if not, gtfo.
@@ -106,6 +137,8 @@
             }*/		    
 
         }
+      
+      echo 'I should not be here<br>';
   }
 
 
@@ -161,13 +194,19 @@
 		$error = $errorText;
       
         if($page == "login") {
-		  require "./login.php";
+          session_start();
+          $_SESSION['authError'] = $error;
+          header("Location: ../login.php");
+          exit;
+            
+		  //require "../login.php";
+          
         }
         else if ($page == "register") {
-            require "./register.php";
+            require "/register.php";
         }
         else {
-            require "./login.php";
+            require "/login.php";
         }
     
   }
