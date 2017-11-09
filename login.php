@@ -79,7 +79,7 @@
 
                         }
                         else {
-                            echo '<p>message should go here</p>';
+                            //echo '<p>message should go here</p>';
                         }
                     ?>
 

@@ -1,3 +1,18 @@
+<?php
+	/*if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
+	   $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	   header('Location: ' . $url);
+	    //exit;
+	}*/
+	session_start();
+
+        $loggedIn = empty($_SESSION['username']) ? false : $_SESSION['username'];
+	      if (!$loggedIn) {
+		  header("Location: ./login.php");
+		  die;
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +62,7 @@
               <a class="nav-link" href="./profile.php">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Out</a>
+              <a class="nav-link" href="./phpservices/logout.php">Sign Out</a>
             </li>
           </ul>
         </div>
