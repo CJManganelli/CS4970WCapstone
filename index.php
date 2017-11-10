@@ -6,11 +6,15 @@
 	}*/
 	session_start();
 
-        $loggedIn = empty($_SESSION['username']) ? false : $_SESSION['username'];
-	      if (!$loggedIn) {
-		  header("Location: ./login.php");
-		  die;
-	}
+      $loggedIn = empty($_SESSION['username']) ? false :       $_SESSION['username'];
+      if (!$loggedIn) {
+        header("Location: ./login.php");
+        die;
+	  }
+      else {
+        //$fname = $_SESSION['fname'];
+        $fname = 'Jason';
+      }
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +45,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">GameOn-Mizzou</a>
+        <a class="navbar-brand" href="./index.php">GameOn-Mizzou</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,20 +75,20 @@
 
     <!-- Page Content -->
     <div class="container">
+        
+        
+        
+      <h2 class="my-4">Welcome Back <?php print $fname; ?>!</h2>
+      <hr>
 
       <!-- Page Heading -->
-      <h1 class="my-4">Upcomming Events
+      <h1 class="my-4">Upcomming Events:
         <small></small>
       </h1>
 
       <!-- Event Template --> <!-- PHP will generate all the upcoming events -->
       <div class="row">
-        <?php echo $loggedIn . '<br>'; ?>
-        <!--<div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-          </a>
-        </div>-->
+          
         <div class="col-md-5">
           <h3>Event One</h3>
           <ul>
@@ -94,6 +98,7 @@
           </ul>
           <a class="btn btn-primary" href="#">Count Me In!</a>
         </div>
+          
       </div>
       <!-- /.row -->
 

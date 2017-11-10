@@ -42,7 +42,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">GameOn-Mizzou</a>
+        <a class="navbar-brand" href="./index.php">GameOn-Mizzou</a>
 
       </div>
     </nav>
@@ -60,32 +60,35 @@
         <div class="col-md-5">
             <form role="form" action="./phpservices/login-handler.php" method="POST">
 
-            <input type="hidden" name="action" value="login">
+                <input type="hidden" name="action" value="login">
 
-            <div class="form-group">
-              <label for="user">Username:</label>
-              <input type="user" name="username" class="form-control" id="user">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" name="password" class="form-control" id="pwd">
-            </div>
-                    <?php
-                        
-                        $error = $_SESSION['authError'];
-                        
-                        if($error) {
-                            print "<div class='alert alert-warning'>$error</div>\n";
+                <div class="form-group">
+                  <label for="user">Username:</label>
+                  <input type="user" name="username" class="form-control" id="user">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Password:</label>
+                  <input type="password" name="password" class="form-control" id="pwd">
+                </div>
+                        <?php
 
-                        }
-                        else {
-                            //echo '<p>message should go here</p>';
-                        }
-                    ?>
+                            $error = $_SESSION['authError'];
 
-            <button type="submit" class="btn btn-default">Login</button>
+                            if($error) {
+                                print "<div class='alert alert-warning'>$error</div>\n";
+                                $_SESSION['authError'] = NULL;
+
+                            }
+                            else {
+                                //echo '<p>message should go here</p>';
+                            }
+                        ?>
+                
+                <button type="submit" class="btn btn-default">Login</button>
+                <a href="./register.php">New? Sign up today!</a>
+                
             </form>
-            </div>
+        </div>
      </div>
       <!-- /.row -->
 

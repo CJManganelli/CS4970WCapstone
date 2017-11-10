@@ -43,7 +43,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">GameOn-Mizzou</a>
+        <a class="navbar-brand" href="./index.php">GameOn-Mizzou</a>
 
       </div>
     </nav>
@@ -86,9 +86,15 @@
             <div class="form-group" id="passMatch"></div>
             
             <?php
+                $error = $_SESSION['regError'];
+                        
                 if($error) {
                     print "<div class='alert alert-warning'>$error</div>\n";
+                    $_SESSION['regError'] = NULL;
 
+                }
+                else {
+                    //echo '<p>message should go here</p>';
                 }
             ?>
 

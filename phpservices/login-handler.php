@@ -70,6 +70,7 @@
             $password = empty($_POST['password']) ? '' : $_POST['password']; 
             
             ///* This is temporary while I wait for authentication queries
+            //  However, possibly make this just an if($verified === true) after comparing with DB
             
             if($username == 'admin' && $password == 'password'){
                 echo '<h1>It works!</h1>';
@@ -80,7 +81,7 @@
             }
             else {
                 echo '<h1>Something broke!</h1>';
-                sendBack('invaild username or password', 'login');
+                sendBack('Invaild username or password!<br>Please try again.', 'login');
                 
             }
             
