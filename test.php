@@ -19,6 +19,11 @@ $password = 'password';
 $hardCode = '$2y$10$Ig2vrkrMSFr1HuN5MvrNQOOvCl8/d16RufFO1tUDhnHD6Wel8AQIe';
 
 
+$newPass = 'capstone';
+$newHash = password_hash($newPass, PASSWORD_BCRYPT);
+
+print 'new pass: ' . $newHash . '<br>';
+
 
 print 'password is: ' . $password . '<br>';
 
