@@ -94,26 +94,24 @@
             <div class='col-md-4 col-md-offset-5'>
                 <form action="/createEvent.php" method="POST">
                     <div class='form-group'>
-                        <label for='activity'>Activity:</label>
+                        <label for='activity'>What are we doing?:</label>
                         <?php 
                             print '<select class="form-control" id="activity">';
-                            //loop and add options from DB
+                            getOptionsFromDB('activity');
                             print '</select>';
                         ?>
-                        <label for='location'>Location:</label>
+                        <label for='location'>Where are we doing it?:</label>
                         <?php 
                             print '<select class="form-control" id="location">';
-                            //loop and add options from DB
+                            getOptionsFromDB('location');
                             print '</select>';
                         ?>
                         <br>
-                        <label for='eventDate'>Date:</label>
+                        <label for='eventDate'>When are we doing it?:</label>
                         <br>
-                        <input type='date' class='form-control' id='eventDate'>
+                        <input type='datetime-local' class='form-control' name="dateTime">
                         <br>
-                        <label for='eventTime'>Time:</label>
-                        <br>
-                        <input type='time' class='form-control' id='eventTime'>
+                        <button type="submit" class="btn btn-primary">Game On!</button>
 
 
 
@@ -140,3 +138,73 @@
   </body>
 
 </html>
+
+
+
+<?php
+
+    function getOptionsFromDB($option) {
+        
+        $sql = '';
+        
+        if($option == 'activity'){
+            $sql = 'SELECT name FROM event;';
+        }
+        else if ($option == 'location') {
+            $sql = 'SELECT name FROM location;';
+        }
+        else {
+            $sql = '';
+        }
+        
+        require("./phpservices/connectDB.php");
+        $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
+        
+        if(!$link) {
+            print '<option>database error!</option>';
+        }
+        else {
+            
+            //execute
+            if($result = mysqli_query($link, $sql)) {
+                
+                
+                $formatedResults = '';
+                
+                while($row = $result->fetch_array(MYSQLI_NUM)){
+                    print '<option>'.$row[0].'</option>';
+                }
+                
+                
+            }
+            else {
+                
+                print '<option>database error!</option>';
+                
+                
+            } //if(mysqli_stmt_execute($sql))
+            
+            
+            
+            
+        } // end if(!$link)
+        
+        
+        
+        
+        
+        
+    } // end getOptionsFromDB
+
+
+
+
+
+
+
+
+
+
+
+
+?>

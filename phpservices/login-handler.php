@@ -213,7 +213,11 @@
       
       $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
       
-      $query = ''; //waiting on a query
+      $query = '
+      
+                
+      
+                '; //waiting on a query
       
       if ($stmt = msqli_prepare($link, $query)) {
           mysqli_stmt_bind_param($stmt, "sss", $user, $salt, $hashedpass);

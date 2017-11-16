@@ -77,7 +77,7 @@
         <small></small>
       </h1>
       
-      <!-- Search Options -->
+      <!-- Search Options Select Buttons -->
       <div class="row">
         
         <!--<form action="./searchEvents.html" method="GET" class="col-md-4 col-md-offset-5">
@@ -120,7 +120,10 @@
         
         </div>
         <hr>
-        <div class="row" id="eventDisplay"></div>
+        
+        
+      <!-- This is where the events will spit out -->  
+      <div class="row" id="eventDisplay"></div>
 
 
     </div>

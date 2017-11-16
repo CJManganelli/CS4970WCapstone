@@ -88,6 +88,60 @@
 
       <!-- Event Template --> <!-- PHP will generate all the upcoming events -->
       <div class="row">
+        <?php
+          //connect to db
+          //pull upcoming events
+          //list them out
+        $eventID = 70;
+        $event = 'Soccer';
+        $location = 'Field 1';
+        $time = '7:30pm';
+        $date = '11/14/17';
+        
+        formatEventDetails($eventID, $event, $location, $time, $date);
+        
+        /*
+        print '
+        
+            <div class="col-md-5">
+                <form role="form" action="./phpservices/countMeIn.php" method="POST">
+                    <input type="hidden" name="eventID" value="'.$eventID.'">
+
+                    <h3>'. $event .'</h3>
+                    <ul>
+                        <li>Date:'.$date.'</li> 
+                        <li>Time:'.$time.'</li>
+                        <li>Location:'.$location.'</li>
+                    </ul>
+
+                    <button type="submit">Count Me In!</button>
+
+                </form>
+            </div>
+        
+        ';
+        */
+        ?>
+          
+          
+        <!--  
+        <div class="col-md-5">
+            <form role="form" action="./phpservices/countMeIn.php" method="POST">
+                <input type="hidden" name="event" value="70">
+                <input type="hidden" name="location" value="40">
+                <input type="hidden" name="time" value="4:30pm">
+                
+                <h3>Event One</h3>
+                <ul>
+                    <li>Date:</li> 
+                    <li>Time:</li>
+                    <li>Location:</li>
+                </ul>
+                
+                <button type="submit">Count Me In!</button>
+            
+            </form>
+        </div>
           
         <div class="col-md-5">
           <h3>Event One</h3>
@@ -98,6 +152,7 @@
           </ul>
           <a class="btn btn-primary" href="#">Count Me In!</a>
         </div>
+        -->
           
       </div>
       <!-- /.row -->
@@ -121,3 +176,38 @@
   </body>
 
 </html>
+
+<?php
+
+    function formatEventDetails($eventID, $event, $location, $time, $date) {
+        
+        //$eventID = 70;
+        //$event = 'Soccer';
+        //$location = 'Field 1';
+        //$time = '7:30pm';
+        //$date = '11/14/17';
+        
+        print '
+        
+            <div class="col-md-5">
+                <form role="form" action="./phpservices/countMeIn.php" method="POST">
+                    <input type="hidden" name="eventID" value="'.$eventID.'">
+
+                    <h3>'. $event .'</h3>
+                    <ul>
+                        <li>Date:'.$date.'</li> 
+                        <li>Time:'.$time.'</li>
+                        <li>Location:'.$location.'</li>
+                    </ul>
+
+                    <button type="submit" class="btn btn-primary">Count Me In!</button>
+
+                </form>
+            </div>
+        
+        ';
+            
+    }
+
+
+?>
