@@ -9,6 +9,7 @@ function sortEvents(str) {
     xmlhttp.onreadystatechange = function() {
         
       if(this.readyState == 4 && this.status == 200) {
+        console.log('why no response?');
         document.getElementById("eventDisplay").innerHTML = this.responseText;  
       }
 

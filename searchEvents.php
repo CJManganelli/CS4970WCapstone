@@ -105,7 +105,7 @@
         
             <!-- Event Template --> <!-- PHP will generate all the upcoming events -->
                
-                <div class="col-md-4 col-md-offset-5">
+                <!--<div class="col-md-4 col-md-offset-5">
                   <h3>Event One</h3>
                   <ul>
                     <li>Date:</li> 
@@ -113,7 +113,7 @@
                     <li>Location:</li>
                   </ul>
                   <a class="btn btn-primary" href="#">Count Me In!</a>
-                </div>
+                </div> -->
             
 
           <!-- /Event Template -->

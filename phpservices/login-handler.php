@@ -72,29 +72,47 @@
             ///* This is temporary while I wait for authentication queries
             //  However, possibly make this just an if($verified === true) after comparing with DB
             
+            //$username = 'admin';
+            //$password = 'password';
+            
+            
             //Define the query
             $sql = '
             
-            
+                SELECT
+                    id as userID,
+                    fName,
+                    lName,
+                    passhash
+                FROM
+                    profile
+                WHERE
+                    username = ?;
             
             ';
             
             //prepare
             
             if ($stmt = mysqli_prepare($link, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $user);
+                mysqli_stmt_bind_param($stmt, "s", $username);
                 
                 //execute
                 if (mysqli_stmt_execute($stmt)) {
                     $result = mysqli_stmt_get_result($stmt);
                     $array = mysqli_fetch_assoc($result);
 
-                    //$dbPass = $array['hashed_password'];          
+                    $dbPass = $array['passhash'];
+                    $userID = $array['userID'];
+                    $fName = $array['fName'];
+                    $lName = $array['lName'];
+                    
+                    
 
                     if(password_verify($password, $dbPass)) {
                         echo '<h1>It works!</h1>';
                         session_start();
                         $_SESSION['username'] = $username;
+                        $_SESSION['userID'] = $userID;
                         header("Location: ../index.php");
                         exit;
                     }
@@ -111,6 +129,9 @@
                 }
 
             }
+            else {
+                echo 'fuck the police, coming straight from the underground';
+            }
             
         
             
@@ -118,7 +139,7 @@
             
             
             
-            
+            /*
             if($username == 'admin' && $password == 'password'){
                 echo '<h1>It works!</h1>';
                 session_start();
@@ -131,6 +152,7 @@
                 sendBack('Invaild username or password!<br>Please try again.', 'login');
                 
             }
+            */
             
             //*/
             

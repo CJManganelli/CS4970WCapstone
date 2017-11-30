@@ -92,24 +92,24 @@
 
         <div class='row'>
             <div class='col-md-4 col-md-offset-5'>
-                <form action="/createEvent.php" method="POST">
+                <form action="./phpservices/gameOn.php" method="POST">
                     <div class='form-group'>
                         <label for='activity'>What are we doing?:</label>
                         <?php 
-                            print '<select class="form-control" id="activity">';
+                            print '<select class="form-control" id="activity" name="activity">';
                             getOptionsFromDB('activity');
                             print '</select>';
                         ?>
                         <label for='location'>Where are we doing it?:</label>
                         <?php 
-                            print '<select class="form-control" id="location">';
+                            print '<select class="form-control" id="location" name="location">';
                             getOptionsFromDB('location');
                             print '</select>';
                         ?>
                         <br>
-                        <label for='eventDate'>When are we doing it?:</label>
+                        <label for='dateTime'>When are we doing it?:</label>
                         <br>
-                        <input type='datetime-local' class='form-control' name="dateTime">
+                        <input type='datetime-local' class='form-control' name="dateTime" id="dateTime">
                         <br>
                         <button type="submit" class="btn btn-primary">Game On!</button>
 

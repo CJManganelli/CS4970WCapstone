@@ -1,5 +1,5 @@
 <?php
-
+/*
 require './phpservices/connectDB.php';
 
 
@@ -49,5 +49,23 @@ if(password_verify($password, $hardCode)) {
 else {
     print 'fuck this project<br>';
 }
+*/
+
+
+    $dateTime = '2017-11-14 00:00:00';
+    $dtArray = explode(' ', $dateTime);
+        
+    $date = $dtArray[0];
+    $time = $dtArray[1];
+    
+    echo $date .' '. $time;
+
+    
+
+
+
+
+
+
 
 ?>
