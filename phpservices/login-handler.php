@@ -24,25 +24,15 @@
 */
   //$action = empty($_POST['action']) ? '' : $_POST['action'];
   
-  $action = $_POST['action'];
+  //$action = $_POST['action'];
 
   //$action = 'login';
 
-  echo $action . '<br>';
+  //echo $action . '<br>';
 
-  if($action == 'login') {
-    echo "login function<br>";
-    logIn();
-  }
-  else if ($action == 'register') {
-    echo 'register<br>';
-    register();
-  }
-  else {
-    //echo 'register<br>';
-    sendBack('Something Broke!', 'login');
-  }
+  logIn();
 
+  
   function logIn() {
       
         //connect to db
@@ -67,7 +57,9 @@
             echo 'Hello?';
 
             $username = empty($_POST['username']) ? '' : $_POST['username'];
-            $password = empty($_POST['password']) ? '' : $_POST['password']; 
+            $password = empty($_POST['password']) ? '' : $_POST['password'];
+            
+            
             
             ///* This is temporary while I wait for authentication queries
             //  However, possibly make this just an if($verified === true) after comparing with DB
@@ -212,56 +204,6 @@
   }
 
 
-
-  function register() {
-      
-      $user = empty($_POST['username']) ? '' : $_POST['username'];
-      $password = empty($_POST['password']) ? '' : $_POST['password'];
-      $fName = empty($_POST['fName']) ? '' : $_POST['fName'];
-      $lName = empty($_POST['lName']) ? '' : $_POST['lName'];
-      
-      print $user;
-      print '<br>';
-      print $password;
-      print '<br>';
-      print $fName;
-      print ' ';
-      print $lName;
-      
-      
-      
-      
-      $hashedpass = password_hash($password, PASSWORD_BCRYPT);
-      
-      $link = mysqli_connect($SQLHOST, $SQLUSER, $SQLPASS, $SQLDB);
-      
-      $query = '
-      
-                
-      
-                '; //waiting on a query
-      
-      if ($stmt = msqli_prepare($link, $query)) {
-          mysqli_stmt_bind_param($stmt, "sss", $user, $salt, $hashedpass);
-          
-          if(mysqli_stmt_execute($stmt)) {
-              echo '<div class = "alert alert-success"><h3>Success!</h3></div>';
-              echo '<a href="./login.php" class="btn btn-info">Login</a>';
-          }
-          else {
-              echo '<h3>Something Broke!</h3>';
-              echo '<a href="./register.php" class="btn btn-info">Back</a>';
-          }
-      }
-      else {
-          echo '<h3>Something Broke!</h3>';
-          echo '<a href="./register.php" class="btn btn-info">Back</a>';
-      }
-      
-      
-      
-  }
-
   function sendBack($errorText, $page) {
     
  		$username = "";
@@ -277,7 +219,10 @@
           
         }
         else if ($page == "register") {
-            require "/register.php";
+            session_start();
+            $_SESSION['authError'] = $error;
+            header("Location: ../register.php");
+            exit;
         }
         else {
             require "/login.php";

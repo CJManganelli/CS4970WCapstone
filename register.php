@@ -1,3 +1,19 @@
+<?php
+	/*if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
+	   $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	   header('Location: ' . $url);
+	    //exit;
+	}*/
+	session_start();
+
+        $loggedIn = empty($_SESSION['username']) ? false : $_SESSION['username'];
+        if ($loggedIn) {
+          header("Location: ./index.php");
+          exit;
+	   }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +75,7 @@
       <div class="row">
         
         <div class="col-md-5">
-            <form role="form" action="./phpservices/login-handler.php" method="POST">
+            <form role="form" action="./phpservices/register-handler.php" method="POST">
 
             <input type="hidden" name="action" value="register">
                 
