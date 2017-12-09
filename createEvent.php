@@ -93,7 +93,9 @@
         <div class='row'>
             <div class='col-md-4 col-md-offset-5'>
                 <form action="./phpservices/gameOn.php" method="POST">
+                    
                     <div class='form-group'>
+                         
                         <label for='activity'>What are we doing?:</label>
                         <?php 
                             print '<select class="form-control" id="activity" name="activity">';
@@ -112,8 +114,6 @@
                         <input type='datetime-local' class='form-control' name="dateTime" id="dateTime">
                         <br>
                         <button type="submit" class="btn btn-primary">Game On!</button>
-
-
 
 
                     </div> <!-- /form-group -->        
@@ -148,10 +148,10 @@
         $sql = '';
         
         if($option == 'activity'){
-            $sql = 'SELECT name FROM event;';
+            $sql = 'SELECT name, id FROM event;';
         }
         else if ($option == 'location') {
-            $sql = 'SELECT name FROM location;';
+            $sql = 'SELECT name, id FROM location;';
         }
         else {
             $sql = '';
@@ -172,7 +172,7 @@
                 $formatedResults = '';
                 
                 while($row = $result->fetch_array(MYSQLI_NUM)){
-                    print '<option>'.$row[0].'</option>';
+                    print '<option value='.$row[1].'|'.$row[0].'>'.$row[0].'</option>';
                 }
                 
                 
