@@ -148,7 +148,7 @@
         $sql = '';
         
         if($option == 'activity'){
-            $sql = 'SELECT name, id FROM event;';
+            $sql = 'SELECT name, id FROM type;';
         }
         else if ($option == 'location') {
             $sql = 'SELECT name, id FROM location;';
